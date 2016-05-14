@@ -1,0 +1,19 @@
+{
+  "name": "node-yow",
+  "version": "1.0.0",
+  "description": "",
+  "main": "yow.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meg768/node-yow.git"
+  },
+  "author": "Magnus Egelberg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/meg768/node-yow/issues"
+  },
+  "homepage": "https://github.com/meg768/node-yow#readme"
+}
