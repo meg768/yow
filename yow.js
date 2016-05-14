@@ -15,4 +15,6 @@ module.exports.extend     = require('extend');
 
 module.exports.Events     = require('./src/events.js'); 
 
+module.exports.mkdir      = require('./src/fs.js').mkdir;
+module.exports.fileExists = require('./src/fs.js').fileExists;
 
