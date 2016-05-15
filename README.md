@@ -21,3 +21,5 @@ Toolbox for Node. Contains stuff you only wished was there in the first place.
 - **isObject(object)**     - Is object an object? BTW **null** is not an object.
 - **choose(array)**        - Returns a randomly chosen object in the specified array.
 - **rand(min, max)**       - Returns a random number from min to max (inclusive).
+
+Anything more that you need in **every** Node project? Let me know.

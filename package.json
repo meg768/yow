@@ -1,6 +1,6 @@
 {
 	"name": "yow",
-	"version": "1.0.6",
+	"version": "1.0.7",
 	"description": "You Only Wish module",
 	"main": "yow.js",
 	"scripts": {
@@ -16,6 +16,12 @@
 		"url": "https://github.com/meg768/yow/issues"
 	},
 	"homepage": "https://github.com/meg768/yow#readme",
+	"keywords": [
+		"toolbox",
+		"toolbelt",
+		"basics",
+		"essentials"
+	],
 	"dependencies": {
 		"extend": "^3.0.0",
 		"sprintf-js": "^1.0.3"
