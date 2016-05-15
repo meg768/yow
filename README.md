@@ -10,7 +10,8 @@ Toolbox for Node. Contains stuff you only wished was there in the first place.
 
 - **sprintf(args)**        - Just as you would expect. Uses the npm module 'sprintf-js'.
 - **extend(args)**         - Again, just as you would expect. Uses the npm module 'extend'.
-- **mkdir(path)**          - Creates the directory you specify. It will create multiple directories if they do not exit.
+- **mkdir(path)**          - Creates the directory you specify.
+- **mkpath(path)**         - Creates the directory you specify. It will create multiple directories if they do not exit.
 - **fileExists(path)**     - Nothing fancy, it just returns true/false.
 - **isType(object, type)** - Returns true/false if typeof equals 'type'.
 - **isArray(object)**      - Is object an array?
@@ -22,4 +23,4 @@ Toolbox for Node. Contains stuff you only wished was there in the first place.
 - **choose(array)**        - Returns a randomly chosen object in the specified array.
 - **rand(min, max)**       - Returns a random number from min to max (inclusive).
 
-Anything more that you need in **every** Node project? Let me know.
+Anything more that you need in just about **every** Node project? Let me know.
