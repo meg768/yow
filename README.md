@@ -15,10 +15,10 @@ Toolbox for Node. Contains stuff you only wished was there in the first place.
 - **fileExists(path)**     - Nothing fancy, it just returns true/false.
 - **isType(object, type)** - Returns true/false if typeof equals 'type'.
 - **isArray(object)**      - Is object an array?
-- **isNumber(object)**     - Is object a JavaScript number object?
-- **isString(object)**     - Is object a string?
+- **isNumber(object)**     - Is object a JavaScript **Number** object?
+- **isString(object)**     - Is object a **String** object?
 - **isDate(object)**       - Is object a **Date** object?
-- **isFunction(object)**   - Is object a function?
+- **isFunction(object)**   - Is object a **function** object?
 - **isObject(object)**     - Is object an object? BTW **null** is not an object.
 - **choose(array)**        - Returns a randomly chosen object in the specified array.
 - **rand(min, max)**       - Returns a random number from min to max (inclusive).
