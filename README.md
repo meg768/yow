@@ -1,12 +1,20 @@
-# node-yow
+# Yow
 
-Contains stuff for Node You Only Wished was there in the first place.
+Toolbox for Node. Contains stuff you only wished was there in the first place.
 
 # Installation
 
-	npm install yow
+	npm install yow --save
 	
 # Contents
+
+	sprintf()
+	
+Just as you would expect. Uses the npm module 'sprintf-js'.
+
+	extend()
+	
+Again, just as you would expect. Uses the npm module 'extend'.
 
 	mkdir(path)
 	
