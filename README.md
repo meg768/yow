@@ -23,4 +23,3 @@ Toolbox for Node. Contains stuff you only wished was there in the first place.
 - **choose(array)**        - Returns a randomly chosen object in the specified array.
 - **rand(min, max)**       - Returns a random number from min to max (inclusive).
 
-Anything more that you need in just about **every** Node project? Let me know.
