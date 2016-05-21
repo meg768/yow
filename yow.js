@@ -1,7 +1,6 @@
 module.exports.sprintf    = require('sprintf-js').sprintf;
 module.exports.extend     = require('extend');
 
-
 module.exports.isType     = require('./src/istype.js').isType;
 module.exports.isArray    = require('./src/istype.js').isArray;
 module.exports.isNumber   = require('./src/istype.js').isNumber;

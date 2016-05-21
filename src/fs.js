@@ -13,6 +13,7 @@ var fileExists = module.exports.fileExists = function(path) {
 	return false;		
 }
 
+
 var mkdir = module.exports.mkdir = function(path, mode) {
 
     if (typeof mode === 'undefined')
@@ -21,6 +22,7 @@ var mkdir = module.exports.mkdir = function(path, mode) {
 	if (!fileExists(path))
 		fs.mkdirSync(path, mode);		
 }
+
 
 var mkpath = module.exports.mkpath = function (path, mode) {
 
