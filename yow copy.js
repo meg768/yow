@@ -1,13 +1,15 @@
 module.exports.sprintf    = require('sprintf-js').sprintf;
 module.exports.extend     = require('extend');
 
-module.exports.isType     = require('./src/istype.js').isType;
-module.exports.isArray    = require('./src/istype.js').isArray;
-module.exports.isNumber   = require('./src/istype.js').isNumber;
-module.exports.isString   = require('./src/istype.js').isString;
-module.exports.isDate     = require('./src/istype.js').isDate;
-module.exports.isObject   = require('./src/istype.js').isObject;
-module.exports.isFunction = require('./src/istype.js').isFunction;
+module.exports.isType     = require('./src/is.js').isType;
+module.exports.isArray    = require('./src/is.js').isArray;
+module.exports.isNumber   = require('./src/is.js').isNumber;
+module.exports.isString   = require('./src/is.js').isString;
+module.exports.isDate     = require('./src/is.js').isDate;
+module.exports.isObject   = require('./src/is.js').isObject;
+module.exports.isFunction = require('./src/is.js').isFunction;
+module.exports.isInteger  = require('./src/is.js').isInteger;
+module.exports.isFloat    = require('./src/is.js').isFloat;
 
 module.exports.rand       = require('./src/random.js').rand;
 module.exports.choose     = require('./src/random.js').choose;

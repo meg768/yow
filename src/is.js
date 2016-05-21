@@ -25,3 +25,12 @@ module.exports.isObject = function(obj) {
 module.exports.isFunction = function(obj) {
 	return typeof obj === 'function';
 };
+
+module.exports.isInteger = function (n) {
+    return Number(n) === n && n % 1 === 0;
+}
+
+module.exports.isFloat = function (n) {
+    return Number(n) === n && n % 1 !== 0;
+}
+
