@@ -14,11 +14,10 @@ var rand = module.exports.rand = function(min, max) {
 var choose = module.exports.choose = function(items) {
 	return items[Math.floor((Math.random() * items.length))];
 }
-	
 
 
 
-module.exports.random = function() {
+var random = module.exports.random = function() {
 	
 	if (arguments.length == 0)
 		return Math.random();

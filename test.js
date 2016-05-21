@@ -1,11 +1,7 @@
-
-
 var random = require('./yow.js').random;
-var object = {};
-object.A = 'A';
-object.B = 'B';
-object.C = 'C';
 
-//console.log(random(object));
-
-console.log(random(2));
+console.log(random({A:'Ahh', B:'Bee', C:'See'}));
+console.log(random(['A', 'B', 'C']));
+console.log(random(100, 101));
+console.log(random(1));
+console.log(random('Foo'));
