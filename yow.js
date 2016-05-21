@@ -11,6 +11,7 @@ module.exports.isFunction = require('./src/is.js').isFunction;
 module.exports.isInteger  = require('./src/is.js').isInteger;
 module.exports.isFloat    = require('./src/is.js').isFloat;
 
+module.exports.random     = require('./src/random.js').random;
 module.exports.rand       = require('./src/random.js').rand;
 module.exports.choose     = require('./src/random.js').choose;
 	
