@@ -16,9 +16,11 @@ Toolbox for Node. Contains stuff you only wished was there in the first place.
 
 ### File System
 
-- **mkdir(path)**          - Creates the directory you specify.
-- **mkpath(path)**         - Creates the directory you specify. It will create multiple directories if they do not exit.
-- **fileExists(path)**     - Nothing fancy, it just returns true/false.
+- **mkdir(path)**                 - Creates the directory you specify.
+- **mkpath(path)**                - Creates the directory you specify. It will create multiple directories if they do not exit.
+- **fileExists(path)**            - Nothing fancy, it just returns true/false.
+- **readJSON(fileName)**          - Reads a JSON file and returns the contents.
+- **writeJSON(fileName, object)** - Writes an object to a JSON file.
 
 
 ### Type Checks

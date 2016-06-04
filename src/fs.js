@@ -1,6 +1,14 @@
 var fs = require('fs');
 var Path = require('path');
 
+var readJSON = module.exports.readJSON = function(fileName, defaultValue) {
+	return JSON.parse(fs.readFileSync(fileName));
+}
+
+var writeJSON = module.exports.writeJSON = function(fileName, object) {
+	return fs.writeFileSync(fileName, JSON.stringify(object, null, '\t'));
+}
+
 var fileExists = module.exports.fileExists = function(path) {
 
 	try {

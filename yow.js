@@ -21,4 +21,6 @@ module.exports.Events     = require('./src/events.js');
 module.exports.mkdir      = require('./src/fs.js').mkdir;
 module.exports.mkpath     = require('./src/fs.js').mkpath;
 module.exports.fileExists = require('./src/fs.js').fileExists;
+module.exports.readJSON   = require('./src/fs.js').readJSON;
+module.exports.writeJSON  = require('./src/fs.js').writeJSON;
 
