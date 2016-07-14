@@ -5,7 +5,7 @@ Toolbox for Node. Contains stuff you only wished was there in the first place.
 ## Installation
 
 	npm install yow --save
-	
+
 ## Methods
 
 ### General Purpose
@@ -43,3 +43,10 @@ Toolbox for Node. Contains stuff you only wished was there in the first place.
 - **random(min, max)**     - Returns a random number from min to max (inclusive).
 - **random(array)**        - Returns a randomly chosen object in the specified array.
 - **random(object)**       - Returns a randomly chosen object property.
+
+### Logging
+
+- **prefixLogs(prefix)**   - Prefix all logs with the specified prefix. This may be a function or a string expression.
+                             Default is the current date/time.
+- **redirectLogs(file)**   - Redirects all logging to the specified file. If not specified, a log file with the current
+                             date/time will be created.  
