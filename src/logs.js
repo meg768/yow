@@ -50,7 +50,7 @@ var prefixLogs = module.exports.prefixLogs = function(fn) {
 
 var redirectLogs = module.exports.redirectLogs = function(logFile) {
 
-	if (logfile == undefined) {
+	if (logFile == undefined) {
 		var date = new Date();
 		logFile = sprintf('logs/%04d-%02d-%02d-%02d-%02d.log', date.getFullYear(), date.getMonth() + 1, date.getDate(), date.getHours(), date.getMinutes());
 	}
