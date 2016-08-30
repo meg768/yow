@@ -12,8 +12,6 @@ module.exports.isInteger  = require('./src/is.js').isInteger;
 module.exports.isFloat    = require('./src/is.js').isFloat;
 
 module.exports.random     = require('./src/random.js').random;
-module.exports.choose     = require('./src/random.js').choose;
-module.exports.rand       = require('./src/random.js').rand;
 
 module.exports.sprintf    = require("sprintf-js").sprintf;
 module.exports.extend     = require('extend');
