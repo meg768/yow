@@ -57,7 +57,7 @@ var redirectLogs = module.exports.redirectLogs = function(logFile) {
 
 	if (logFile == undefined) {
 		var date = new Date();
-		logFile = sprintf('logs/%04d-%02d-%02d-%02d-%02d.log', date.getFullYear(), date.getMonth() + 1, date.getDate(), date.getHours(), date.getMinutes());
+		logFile = sprintf('logs/%04d-%02d-%02d-%02d-%02d-%02d.log', date.getFullYear(), date.getMonth() + 1, date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds());
 	}
 
 	if (isFunction(logFile))
