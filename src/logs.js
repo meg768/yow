@@ -67,7 +67,7 @@ var redirectLogs = module.exports.redirectLogs = function(logFile) {
 		mkpath(path.dirname(logFile));
 
 	var fs = require('fs');
-	var access = fs.createWriteStream(logFile);
+	var access = fs.createWriteStream(logFile, {'flags': 'a'});
 
 	process.stderr.write = process.stdout.write = access.write.bind(access);
 
