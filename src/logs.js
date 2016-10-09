@@ -23,28 +23,12 @@ var prefixLogs = module.exports.prefixLogs = function(fn) {
 
 	for (var key in funcs) {
 		console[key] = function() {
-			var output = '';
 			var prefix = typeof fn == 'function' ? fn() : fn;
 
-			if (typeof arguments[0] == 'string') {
-				arguments[0].split('\n').forEach(function(line) {
-
-					line = line.replace('\r', '');
-
-					if (line.length > 0) {
-						if (output != '')
-							output += '\n';
-
-						output += prefix + line;
-
-					}
-				});
-			}
-			else {
-				output = prefix + arguments[0];
-			}
-
-			arguments[0] = output;
+			if (key == 'error')
+				process.stderr.write(prefix);
+			else
+				process.stdout.write(prefix);
 
 			funcs[key].apply(console, arguments);
 
