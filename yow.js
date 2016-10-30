@@ -13,11 +13,6 @@ module.exports.isFloat    = require('./src/is.js').isFloat;
 
 module.exports.random     = require('./src/random.js').random;
 
-module.exports.sprintf    = require("sprintf-js").sprintf;
-module.exports.extend     = require('extend');
-
-module.exports.Events     = require('./src/events.js');
-
 module.exports.mkdir      = require('./src/fs.js').mkdir;
 module.exports.mkpath     = require('./src/fs.js').mkpath;
 module.exports.fileExists = require('./src/fs.js').fileExists;
@@ -26,3 +21,6 @@ module.exports.writeJSON  = require('./src/fs.js').writeJSON;
 
 module.exports.prefixLogs   = require('./src/logs.js').prefixLogs;
 module.exports.redirectLogs = require('./src/logs.js').redirectLogs;
+
+module.exports.Events     = require('./src/events.js');
+module.exports.Queue      = require('./src/queue.js');
