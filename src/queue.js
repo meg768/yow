@@ -3,7 +3,7 @@
 var util   = require('util');
 var events = require('events');
 
-var Module = module.exports = function(-) {
+var Module = module.exports = function() {
 
 	var _this = this;
 
