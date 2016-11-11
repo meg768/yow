@@ -9,6 +9,11 @@ var range = module.exports.range = function(min, max, step) {
 
 	var items = [];
 
-	for (var i = min; i < max; i += step)
-		items.push(i);
+	if (step == undefined)
+		step = 1;
+
+	if (step > 0) {
+		for (var i = min; i < max; i += step)
+			items.push(i);
+	}
 }
