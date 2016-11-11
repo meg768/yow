@@ -12,6 +12,7 @@ module.exports.isInteger  = require('./src/is.js').isInteger;
 module.exports.isFloat    = require('./src/is.js').isFloat;
 
 module.exports.random     = require('./src/random.js').random;
+module.exports.range      = require('./src/range.js').range;
 
 module.exports.mkdir      = require('./src/fs.js').mkdir;
 module.exports.mkpath     = require('./src/fs.js').mkpath;
