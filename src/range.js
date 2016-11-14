@@ -16,4 +16,6 @@ var range = module.exports.range = function(min, max, step) {
 		for (var i = min; i < max; i += step)
 			items.push(i);
 	}
+
+	return items;
 }
