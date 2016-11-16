@@ -1,3 +1,5 @@
+var isArray = require('./yow.js').isArray;
+
 
 var Queue = module.exports = function(limit) {
 
@@ -39,8 +41,11 @@ var Queue = module.exports = function(limit) {
 		});
 	}
 
-	this.setQueue = function(queue) {
-		_queue = queue;
+	this.queue = function(queue) {
+		if (isArray(queue))
+			_queue = queue;
+		else
+			_queue = [queue];
 	};
 
 	_this.clear = function() {
