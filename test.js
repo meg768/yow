@@ -8,7 +8,7 @@ var queue = new Queue();
 function print(text) {
 	return new Promise(function(resolve, reject) {
 		console.log(text);
-		resolve();
+		setTimeout(resolve, 2000);
 	});
 }
 
