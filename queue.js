@@ -67,33 +67,30 @@ var Queue = module.exports = function(limit) {
 		return _queue.length == 0;
 	};
 
-
 	this.prequeue = function(promise) {
 
 		if (_queue.length > _limit) {
 			console.log('Queue too big! Truncating.');
+			_queue = [promise];
+		}
+		else {
+			_queue.unshift(promise);
 
-			_this.clear();
 		}
 
-		_queue.unshift(promise);
 	}
 
-
-	this.enqueue = function(promise, args) {
-
-/*
-		if (isArray(args))
-			promise = promise.bind(args[0], args[1], args[2], args[3], args[4], args[5]);
-*/
+	this.enqueue = function(promise) {
 
 		if (_queue.length > _limit) {
 			console.log('Queue too big! Truncating.');
+			_queue = [promise];
+		}
+		else {
+			_queue.push(promise);
 
-			_this.clear();
 		}
 
-		_queue.push(promise);
 	}
 
 };
