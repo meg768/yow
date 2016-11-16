@@ -39,9 +39,16 @@ var Queue = module.exports = function(limit) {
 		});
 	}
 
+	this.setQueue = function(queue) {
+		_queue = queue;
+	};
+
 	_this.clear = function() {
 		_queue = [];
-		_promise = undefined;
+	}
+
+	_this.reset = function() {
+		_queue = [];
 	}
 
 	_this.isRunning = function() {
@@ -51,6 +58,7 @@ var Queue = module.exports = function(limit) {
 	_this.isEmpty = function() {
 		return _queue.length == 0;
 	};
+
 
 	this.prequeue = function(promise) {
 
