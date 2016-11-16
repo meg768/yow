@@ -1,47 +1,51 @@
 
-
-var isFunction = require('./yow.js').isFunction;
-
-var Module = module.exports = function() {
+var Queue = module.exports = function(limit) {
 
 	var _this = this;
 	var _queue = [];
-	var _fn = undefined;
+	var _promise = undefined;
+	var _limit = limit == undefined ? 1000 : limit;
 
-	_this.dequeue = function(callback) {
-		if (_queue.length > 0 && _fn == undefined) {
+	_this.dequeue = function() {
 
-			_fn = _queue.splice(0, 1)[0];
+		return new Promise(function(resolve, reject) {
+			if (_queue.length > 0 && _promise == undefined) {
 
-			_fn(function() {
-				_fn = undefined;
+				_promise = _queue.splice(0, 1)[0];
 
-				if (_queue.length > 0) {
-					setTimeout(function() {
-						_this.dequeue(callback);
-					}, 0);
+				_promise.then(function() {
+					_promise = undefined;
 
-				}
-				else {
-					if (isFunction(callback))
-						callback();
-				}
-			});
+					function recurse() {
+						_this.dequeue().then(function() {
+							resolve();
+						}).catch(function(error) {
+							reject(error);
+						});
 
-		}
-		else {
-			if (isFunction(callback))
-				callback();
-		}
+					};
+
+					setTimeout(recurse, 0);
+				})
+				.catch(function(error) {
+					reject(error);
+				});
+
+			}
+			else {
+				resolve();
+			}
+
+		});
 	}
 
 	_this.clear = function() {
 		_queue = [];
-		_fn    = undefined;
+		_promise = undefined;
 	}
 
 	_this.isRunning = function() {
-		return _fn != undefined;
+		return _promise != undefined;
 	};
 
 	_this.isEmpty = function() {
@@ -49,15 +53,15 @@ var Module = module.exports = function() {
 	};
 
 
-	this.enqueue = function(fn) {
+	this.enqueue = function(promise) {
 
-		if (_queue.length > 50) {
+		if (_queue.length > _limit) {
 			console.log('Queue too big! Truncating.');
 
 			_this.clear();
 		}
 
-		_queue.push(fn);
+		_queue.push(promise);
 	}
 
 };
