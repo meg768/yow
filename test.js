@@ -15,9 +15,12 @@ function print(text) {
 queue.enqueue(print.bind(null, 'Hej'));
 queue.enqueue(print.bind(null, 'Då!'));
 
+//queue.enqueue(print, [this, 'Hej']);
+//queue.enqueue(print, [this, 'Då!']);
+
 queue.dequeue().then(function() {
 	console.log('Klar!');
 })
 .catch(function(error) {
-	console.log(error);
+	console.log(error.stack);
 });

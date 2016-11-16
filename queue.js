@@ -80,7 +80,12 @@ var Queue = module.exports = function(limit) {
 	}
 
 
-	this.enqueue = function(promise) {
+	this.enqueue = function(promise, args) {
+
+/*
+		if (isArray(args))
+			promise = promise.bind(args[0], args[1], args[2], args[3], args[4], args[5]);
+*/
 
 		if (_queue.length > _limit) {
 			console.log('Queue too big! Truncating.');
