@@ -23,5 +23,5 @@ module.exports.writeJSON  = require('./src/fs.js').writeJSON;
 module.exports.prefixLogs   = require('./src/logs.js').prefixLogs;
 module.exports.redirectLogs = require('./src/logs.js').redirectLogs;
 
-module.exports.Events     = require('./src/events.js');
-module.exports.Queue      = require('./src/queue.js');
+//module.exports.Events     = require('./src/events.js');
+//module.exports.Queue      = require('./src/queue.js');
