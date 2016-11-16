@@ -52,6 +52,17 @@ var Queue = module.exports = function(limit) {
 		return _queue.length == 0;
 	};
 
+	this.prequeue = function(promise) {
+
+		if (_queue.length > _limit) {
+			console.log('Queue too big! Truncating.');
+
+			_this.clear();
+		}
+
+		_queue.unshift(promise);
+	}
+
 
 	this.enqueue = function(promise) {
 
