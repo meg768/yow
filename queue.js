@@ -48,13 +48,16 @@ var Queue = module.exports = function(limit) {
 			_queue = [queue];
 	};
 
-	_this.clear = function() {
-		_queue = [];
-	}
+	this.setQueue = this.queue;
 
 	_this.reset = function() {
 		_queue = [];
 	}
+
+	_this.clear = function() {
+		_queue = [];
+	}
+
 
 	_this.isRunning = function() {
 		return _promise != undefined;
