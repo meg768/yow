@@ -71,16 +71,23 @@ var Gopher = module.exports = function(baseURL, defaults) {
 			return '';
 		};
 
+		function buildURI() {
+			return baseURL + buildPath() + buildQuery();
+		};
 
 		return new Promise(function(resolve, reject) {
 
-			var options = {};
-			options.method  = method.toLowerCase();
-			options.uri     = baseURL + buildPath() + buildQuery();
-			options.headers = buildHeaders();
-			options.body    = buildBody();
+			var requestOptions = {};
+			requestOptions.method  = method.toLowerCase();
+			requestOptions.uri     = buildURI();
+			requestOptions.headers = buildHeaders();
+			requestOptions.body    = buildBody();
 
-			clientRequest(options, function (error, response, body) {
+			if (options.debug || true) {
+				console.log('Gopher request:', JSON.stringify(requestOptions, null, '    '));
+			}
+
+			clientRequest(requestOptions, function (error, response, body) {
 
 				if (!error && response.statusCode == 200) {
 					var contentType = '';
