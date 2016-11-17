@@ -1,6 +1,9 @@
 module.exports.sprintf    = require('./sprintf.js');
 module.exports.extend     = require('./extend.js');
 
+module.exports.random     = require('./random.js');
+module.exports.range      = require('./range.js');
+
 module.exports.isType     = require('./is.js').isType;
 module.exports.isArray    = require('./is.js').isArray;
 module.exports.isNumber   = require('./is.js').isNumber;
@@ -10,9 +13,6 @@ module.exports.isObject   = require('./is.js').isObject;
 module.exports.isFunction = require('./is.js').isFunction;
 module.exports.isInteger  = require('./is.js').isInteger;
 module.exports.isFloat    = require('./is.js').isFloat;
-
-module.exports.random     = require('./random.js').random;
-module.exports.range      = require('./range.js').range;
 
 module.exports.mkdir      = require('./fs.js').mkdir;
 module.exports.mkpath     = require('./fs.js').mkpath;
