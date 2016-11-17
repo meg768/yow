@@ -136,7 +136,7 @@ var Gopher = module.exports = function(baseURL, defaultOptions) {
 
 
 };
-
+/*
 function test() {
 
 	var yahoo = new Gopher('https://query.yahooapis.com', {debug:false});
@@ -171,3 +171,4 @@ function test() {
 };
 
 test();
+*/
