@@ -4,7 +4,7 @@ var isFunction = require('./is.js').isFunction;
 var mkpath     = require('./fs.js').mkpath;
 var path       = require('path');
 
-var prefix = function(fn) {
+var prefix = module.exports.prefix = function(fn) {
 
 	var funcs = {
 		log: console.log,
@@ -37,7 +37,7 @@ var prefix = function(fn) {
 
 }
 
-var redirect = function(logFile) {
+var redirect = module.exports.redirect = function(logFile) {
 
 	if (logFile == undefined) {
 		var date = new Date();
