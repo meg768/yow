@@ -88,6 +88,7 @@ Also available as require('yow/random')
 
 - **queue.enqueue(promise)** - Enqueues a promise into an array for execution
 - **queue.dequeue()** - Returns a new promise object and resolves when the queue has been executed.
+- **queue.queue(array)** - Sets the array of promises that will be executed by **dequeue**.
 
 
 ### Timer
