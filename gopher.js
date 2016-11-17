@@ -1,75 +1,47 @@
 var clientRequest = require('client-request');
 
-function isType(obj, type) {
-	return Object.prototype.toString.call(obj) === '[object ' + type + ']';
-};
+var sprintf = require('./sprintf.js');
+var isArray = require('./is.js').isArray;
+var isString = require('./is.js').isString;
+var isObject = require('./is.js').isObject;
 
-function isArray(obj) {
-	return isType(obj, 'Array');
-};
+var Gopher = module.exports = function(baseURL, defaults) {
 
-function isString(obj) {
-	return isType(obj, 'String');
-};
-
-function isObject(obj) {
-	return obj !== null && isType(obj, 'Object');
-};
-
-module.exports = function(baseURL, opts) {
-
-	var _debug = opts && opts.debug;
-
-	this.get = function(path, params, headers) {
-		return this.request('GET', path, params, headers);
+	this.get = function(path, options) {
+		return this.request('GET', path, options);
 	}
 
-	this.put = function(path, params, headers) {
-		return this.request('PUT', path, params, headers);
+	this.put = function(path, options) {
+		return this.request('PUT', path, options);
 	}
 
-	this.post = function(path, params, headers) {
-		return this.request('POST', path, params, headers);
+	this.post = function(path, options) {
+		return this.request('POST', path, options);
 	}
 
-	this.delete = function(path, params, headers) {
-		return this.request('DELETE', path, params, headers);
+	this.delete = function(path, options) {
+		return this.request('DELETE', path, options);
 	}
 
-	this.request = function(method, path, params, headers) {
+	this.request = function(method, path, options) {
 
-		function buildPath(path, params) {
+		if (options == undefined)
+			options = {};
 
-			var parts = [];
+		function buildPath() {
 
-			path.split('/').forEach(function(part) {
-				var match = part.match('^:([_$@A-Za-z0-9]+)$');
+			if (path == undefined)
+				return '';
 
-				if (!match)
-					match = part.match('^{([_$@A-Za-z0-9]+)}$');
-
-				if (match) {
-					var name = match[1];
-
-					if (params[name] != undefined) {
-						parts.push(params[name]);
-						delete params[name]
-					}
-					else
-						parts.push(part);
-				}
-				else
-					parts.push(part);
-
-			});
-
-			return parts.join('/');
+			return '/' + path;
 		};
 
-		function buildParams(params) {
+		function buildQuery() {
 
-			if (params == undefined)
-				params = {};
+			var query = options.query;
+
+			if (query == undefined)
+				return '';
 
 			function uriEncode(value) {
 
@@ -83,83 +55,34 @@ module.exports = function(baseURL, opts) {
 				return encodeURIComponent(value);
 			}
 
-			var array = Object.keys(params).map(function(key) {
-				return encodeURIComponent(key) + '=' + uriEncode(params[key]);
+			var array = Object.keys(query).map(function(key) {
+				return encodeURIComponent(key) + '=' + uriEncode(query[key]);
 			});
 
-			return array.join('&');
+			return '?' + array.join('&');
 		}
 
-		function buildHeaders(headers) {
-
-			var result = {};
-
-			// Add default headers
-			if (opts && opts.headers) {
-				Object.keys(opts.headers).forEach(function(key) {
-					result[key.toLowerCase()] = opts.headers[key];
-				});
-			}
-
-			if (isObject(headers)) {
-				Object.keys(headers).forEach(function(key) {
-					result[key.toLowerCase()] = headers[key];
-				});
-			}
-
-			if (result['content-type'] == undefined)
-				result['content-type'] = 'application/json';
-
-			return result;
+		function buildHeaders() {
+			var headers = {};
+			return headers;
 		};
 
-		function buildBody(method, params, headers) {
-
-			if (method == 'post' || method == 'put') {
-				if (headers['content-type'] == 'application/json') {
-					return JSON.stringify(params);
-				}
-				if (headers['content-type'] == 'application/x-www-form-urlencoded') {
-					return buildParams(params);
-				}
-			}
-		}
-
-		function buildQuery(method, params) {
-			if (method == 'get' || method == 'delete') {
-				return buildParams(params);
-			}
-
+		function buildBody() {
 			return '';
+		};
 
-		}
-
-		function buildURI(method, path, params) {
-			var path  = buildPath(path, params);
-			var query = buildQuery(method, params);
-
-			return baseURL + '/' + (query == '' ? path : path + '?' + query);
-		}
-
-		var options = {};
-		options.method  = method.toLowerCase();
-		options.uri     = buildURI(options.method, path, params);
-		options.headers = buildHeaders(headers);
-		options.body    = buildBody(options.method, params, options.headers);
 
 		return new Promise(function(resolve, reject) {
 
-			if (_debug) {
-				console.log('method', options.method);
-				console.log('uri', options.uri);
-				console.log('headers', options.headers);
-				console.log('body', options.body);
-			}
+			var options = {};
+			options.method  = method.toLowerCase();
+			options.uri     = baseURL + buildPath() + buildQuery();
+			options.headers = buildHeaders();
+			options.body    = buildBody();
 
 			clientRequest(options, function (error, response, body) {
 
 				if (!error && response.statusCode == 200) {
-
 					var contentType = '';
 
 					if (response.headers && isString(response.headers['content-type'])) {
@@ -185,6 +108,7 @@ module.exports = function(baseURL, opts) {
 					}
 				}
 				else {
+
 					if (error == null)
 						error = body.toString();
 
@@ -204,3 +128,39 @@ module.exports = function(baseURL, opts) {
 
 
 };
+
+function test() {
+
+	var yahoo      = new Gopher('https://query.yahooapis.com');
+
+	function getQuote(ticker) {
+		var query = {};
+
+		query.q        = 'select * from yahoo.finance.quotes where symbol =  "' + ticker + '"';
+		query.format   = 'json';
+		query.env      = 'store://datatables.org/alltableswithkeys';
+		query.callback = '';
+
+		yahoo.get('v1/public/yql', {query:query}).then(function(data) {
+			var quotes = data.query.results.quote;
+
+			if (typeof qoutes != 'Array')
+				quotes = [quotes];
+
+			console.log(ticker, '=', quotes[0].LastTradePriceOnly);
+
+		})
+
+		.catch (function(error) {
+
+			console.log('asdfasdasdfasdf', error);
+
+		});
+
+	}
+
+	getQuote('AAPL');
+
+};
+
+test();
