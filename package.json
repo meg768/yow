@@ -1,29 +1,30 @@
 {
-	"name": "yow",
-	"version": "1.0.40",
-	"description": "You Only Wish module",
-	"main": "yow.js",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/meg768/yow.git"
-	},
-	"author": "Magnus Egelberg",
-	"license": "ISC",
-	"bugs": {
-		"url": "https://github.com/meg768/yow/issues"
-	},
-	"homepage": "https://github.com/meg768/yow#readme",
-	"keywords": [
-		"toolbox",
-		"toolbelt",
-		"basics",
-		"essentials"
-	],
-	"dependencies": {
-		"extend": "^3.0.0",
-		"sprintf-js": "^1.0.3"
-	}
+  "name": "yow",
+  "version": "1.0.40",
+  "description": "You Only Wish module",
+  "main": "yow.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meg768/yow.git"
+  },
+  "author": "Magnus Egelberg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/meg768/yow/issues"
+  },
+  "homepage": "https://github.com/meg768/yow#readme",
+  "keywords": [
+    "toolbox",
+    "toolbelt",
+    "basics",
+    "essentials"
+  ],
+  "dependencies": {
+    "client-request": "^1.2.0",
+    "extend": "^3.0.0",
+    "sprintf-js": "^1.0.3"
+  }
 }
