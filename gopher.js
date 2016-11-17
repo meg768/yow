@@ -1,11 +1,12 @@
 var clientRequest = require('client-request');
 
-var sprintf = require('./sprintf.js');
-var isArray = require('./is.js').isArray;
+var sprintf  = require('./sprintf.js');
+var extend   = require('./extend.js');
+var isArray  = require('./is.js').isArray;
 var isString = require('./is.js').isString;
 var isObject = require('./is.js').isObject;
 
-var Gopher = module.exports = function(baseURL, defaults) {
+var Gopher = module.exports = function(baseURL, defaultOptions) {
 
 	this.get = function(path, options) {
 		return this.request('GET', path, options);
@@ -25,8 +26,8 @@ var Gopher = module.exports = function(baseURL, defaults) {
 
 	this.request = function(method, path, options) {
 
-		if (options == undefined)
-			options = {};
+		method  = method.toUpperCase();
+		options = extend({}, defaultOptions, options || {});
 
 		function buildPath() {
 
@@ -78,12 +79,12 @@ var Gopher = module.exports = function(baseURL, defaults) {
 		return new Promise(function(resolve, reject) {
 
 			var requestOptions = {};
-			requestOptions.method  = method.toLowerCase();
+			requestOptions.method  = method;
 			requestOptions.uri     = buildURI();
 			requestOptions.headers = buildHeaders();
 			requestOptions.body    = buildBody();
 
-			if (options.debug || true) {
+			if (options.debug) {
 				console.log('Gopher request:', JSON.stringify(requestOptions, null, '    '));
 			}
 
@@ -99,7 +100,7 @@ var Gopher = module.exports = function(baseURL, defaults) {
 					if (contentType.match("application/json")) {
 
 						try {
-							// Pars JSON first
+							// Parse JSON first
 							var json = JSON.parse(body);
 
 							// And resolve if succeeded
@@ -138,7 +139,7 @@ var Gopher = module.exports = function(baseURL, defaults) {
 
 function test() {
 
-	var yahoo      = new Gopher('https://query.yahooapis.com');
+	var yahoo = new Gopher('https://query.yahooapis.com', {debug:false});
 
 	function getQuote(ticker) {
 		var query = {};
@@ -159,8 +160,7 @@ function test() {
 		})
 
 		.catch (function(error) {
-
-			console.log('asdfasdasdfasdf', error);
+			console.log(error);
 
 		});
 
