@@ -87,7 +87,7 @@ Also available as require('yow/random')
 	var queue = new Queue();
 
 - **queue.enqueue(promise)** - Enqueues a promise into an array for execution
-- **queue.dequeue** - Returns a new promise object and resolves when the queue has been executed.
+- **queue.dequeue()** - Returns a new promise object and resolves when the queue has been executed.
 
 
 ### Timer
@@ -98,4 +98,4 @@ Also available as require('yow/random')
 - **timer.SetTimer(delay, fn)** - Executes the specified function **fn** after a delay.
 	Previously set timers are cancelled.
 
-- **timer.cancel** - Cancels the timer.
+- **timer.cancel()** - Cancels the timer.
