@@ -95,7 +95,7 @@ Also available as require('yow/random')
 	var Timer = require('yow/timer');
 	var timer = new Timer();
 
-- **timer.SetTimer(delay, fn)** - Executes the specified function **fn** after a delay.
+- **timer.setTimer(delay, fn)** - Executes the specified function **fn** after a delay.
 	Previously set timers are cancelled.
 
 - **timer.cancel()** - Cancels the timer.
