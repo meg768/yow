@@ -1,10 +1,10 @@
-var sprintf    = require('sprintf-js').sprintf;
+var sprintf    = require('./sprintf.js');
 var isString   = require('./is.js').isString;
 var isFunction = require('./is.js').isFunction;
 var mkpath     = require('./fs.js').mkpath;
 var path       = require('path');
 
-var prefixLogs = module.exports.prefixLogs = function(fn) {
+var prefix = function(fn) {
 
 	var funcs = {
 		log: console.log,
@@ -37,7 +37,7 @@ var prefixLogs = module.exports.prefixLogs = function(fn) {
 
 }
 
-var redirectLogs = module.exports.redirectLogs = function(logFile) {
+var redirect = function(logFile) {
 
 	if (logFile == undefined) {
 		var date = new Date();

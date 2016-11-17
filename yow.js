@@ -1,27 +1,24 @@
-module.exports.sprintf    = require('sprintf-js').sprintf;
-module.exports.extend     = require('extend');
+module.exports.sprintf    = require('./sprintf.js');
+module.exports.extend     = require('./extend.js');
 
-module.exports.isType     = require('./src/is.js').isType;
-module.exports.isArray    = require('./src/is.js').isArray;
-module.exports.isNumber   = require('./src/is.js').isNumber;
-module.exports.isString   = require('./src/is.js').isString;
-module.exports.isDate     = require('./src/is.js').isDate;
-module.exports.isObject   = require('./src/is.js').isObject;
-module.exports.isFunction = require('./src/is.js').isFunction;
-module.exports.isInteger  = require('./src/is.js').isInteger;
-module.exports.isFloat    = require('./src/is.js').isFloat;
+module.exports.isType     = require('./is.js').isType;
+module.exports.isArray    = require('./is.js').isArray;
+module.exports.isNumber   = require('./is.js').isNumber;
+module.exports.isString   = require('./is.js').isString;
+module.exports.isDate     = require('./is.js').isDate;
+module.exports.isObject   = require('./is.js').isObject;
+module.exports.isFunction = require('./is.js').isFunction;
+module.exports.isInteger  = require('./is.js').isInteger;
+module.exports.isFloat    = require('./is.js').isFloat;
 
-module.exports.random     = require('./src/random.js').random;
-module.exports.range      = require('./src/range.js').range;
+module.exports.random     = require('./random.js').random;
+module.exports.range      = require('./range.js').range;
 
-module.exports.mkdir      = require('./src/fs.js').mkdir;
-module.exports.mkpath     = require('./src/fs.js').mkpath;
-module.exports.fileExists = require('./src/fs.js').fileExists;
-module.exports.readJSON   = require('./src/fs.js').readJSON;
-module.exports.writeJSON  = require('./src/fs.js').writeJSON;
+module.exports.mkdir      = require('./fs.js').mkdir;
+module.exports.mkpath     = require('./fs.js').mkpath;
+module.exports.fileExists = require('./fs.js').fileExists;
+module.exports.readJSON   = require('./fs.js').readJSON;
+module.exports.writeJSON  = require('./fs.js').writeJSON;
 
-module.exports.prefixLogs   = require('./src/logs.js').prefixLogs;
-module.exports.redirectLogs = require('./src/logs.js').redirectLogs;
-
-//module.exports.Events     = require('./src/events.js');
-//module.exports.Queue      = require('./src/queue.js');
+module.exports.prefixLogs   = require('./logs.js').prefix;
+module.exports.redirectLogs = require('./logs.js').redirect;
