@@ -15,7 +15,7 @@ module.exports.isString = function(obj) {
 };
 
 module.exports.isDate = function(obj) {
-	return isType(obj, 'Date');
+	return isType(obj, 'Date') && !isNaN(obj.getTime());
 };
 
 module.exports.isObject = function(obj) {
@@ -33,4 +33,3 @@ module.exports.isInteger = function (n) {
 module.exports.isFloat = function (n) {
     return Number(n) === n && n % 1 !== 0;
 }
-

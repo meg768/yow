@@ -47,7 +47,7 @@ Toolbox for Node. Contains stuff you only wished was there in the first place.
 - **isArray(object)**       - Is object an array?
 - **isNumber(object)**      - Is object a JavaScript **Number** object?
 - **isString(object)**      - Is object a **String** object?
-- **isDate(object)**        - Is object a **Date** object?
+- **isDate(object)**        - Is object a **Date** object (and contains a valid date)?
 - **isFunction(object)**    - Is object a **function** object?
 - **isObject(object)**      - Is object an object? BTW **null** is not an object.
 - **isInteger(object)**     - Is object an integer?
