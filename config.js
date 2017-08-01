@@ -14,7 +14,7 @@ var Config = module.exports = function (fileName) {
 
 	}
 	catch(error) {
-		json =  {error:error.messageo};
+		json =  {error:error.message};
 	}
 
 	return json;
