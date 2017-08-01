@@ -2,6 +2,7 @@
 
 var Config = module.exports = function (fileName) {
 
+	var fs = require('fs');
 	var Path = require('path');
 	var fileParts = Path.parse(fileName);
 	var configFileName = Path.join(fileParts.dir, fileParts.name) + '.json';
