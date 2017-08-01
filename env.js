@@ -1,6 +1,7 @@
 
-var Module = module.exports = function(fileName) {
+var Module = module.exports = new function(fileName) {
 
+	console.log(fileName, '*****************');
 
 	function parse (src) {
 	  var obj = {}
