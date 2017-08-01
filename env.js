@@ -41,7 +41,9 @@ var Module = module.exports = function(fileName) {
 	    // specifying an encoding returns a string instead of a buffer
 	    var parsedObj = parse(fs.readFileSync(fileName, { encoding: encoding }))
 
+		console.log('parsed', parsedObj);
 	    Object.keys(parsedObj).forEach(function (key) {
+			console.log(key, parsedObj[key]);
 	      process.env[key] = process.env[key] || parsedObj[key]
 	    })
 
