@@ -47,7 +47,7 @@ var x = module.exports = function (fileName) {
 
 	    return { parsed: parsedObj }
 	  } catch (e) {
-		  console.log('ERROR', error);
+		  console.log('ERROR', e);
 	    return { error: e }
 	  }
 	}
