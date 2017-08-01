@@ -5,6 +5,7 @@ var x = module.exports = function (fileName) {
 	function parse (src) {
 	  var obj = {}
 
+	  console.log('parsing', src);
 	  // convert Buffers before splitting into lines and processing
 	  src.toString().split('\n').forEach(function (line) {
 	    // matching "KEY' and 'VAL' in 'KEY=VAL'
@@ -35,7 +36,7 @@ var x = module.exports = function (fileName) {
 	function config (fileName) {
 	  var encoding = 'utf8'
 
-
+	  console.log('***********', fileName);
 	  try {
 	    // specifying an encoding returns a string instead of a buffer
 	    var parsedObj = parse(fs.readFileSync(fileName, { encoding: encoding }))
@@ -46,6 +47,7 @@ var x = module.exports = function (fileName) {
 
 	    return { parsed: parsedObj }
 	  } catch (e) {
+		  console.log('ERROR', error);
 	    return { error: e }
 	  }
 	}
