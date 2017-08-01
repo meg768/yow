@@ -1,3 +1,4 @@
+var fs = require('fs');
 
 var x = module.exports = function (fileName) {
 
