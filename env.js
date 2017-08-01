@@ -1,4 +1,5 @@
 
+/*
 
 function Foo (fileName) {
 
@@ -14,3 +15,4 @@ function Foo (fileName) {
 }
 
 module.exports = Foo;
+*/
