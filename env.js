@@ -37,7 +37,6 @@ var x = module.exports = function (fileName) {
 	function config (fileName) {
 	  var encoding = 'utf8'
 
-	  console.log('***********', fileName);
 	  try {
 	    // specifying an encoding returns a string instead of a buffer
 	    var parsedObj = parse(fs.readFileSync(fileName, { encoding: encoding }))
@@ -48,7 +47,7 @@ var x = module.exports = function (fileName) {
 
 	    return { parsed: parsedObj }
 	  } catch (e) {
-		  console.log('ERROR', e);
+		  console.log(e);
 	    return { error: e }
 	  }
 	}
@@ -57,7 +56,7 @@ var x = module.exports = function (fileName) {
 
 	var fileParts = Path.parse(fileName);
 	var configFileName = Path.join(fileParts.dir, fileParts.name) + '.env';
-	console.log(configFileName);
+//	console.log(configFileName);
 
 	config(configFileName);
 //	dotenv.config(configFileName);
