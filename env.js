@@ -1,5 +1,5 @@
 
-var Module = module.exports = new function(fileName) {
+var Module = module.exports = function(fileName) {
 
 	console.log(fileName, '*****************');
 

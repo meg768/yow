@@ -1,6 +1,6 @@
 {
   "name": "yow",
-  "version": "1.0.49",
+  "version": "1.0.50",
   "description": "You Only Wish module",
   "main": "yow.js",
   "scripts": {
