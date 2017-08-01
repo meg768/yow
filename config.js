@@ -11,7 +11,7 @@ var Config = module.exports = function (fileName) {
 
 	try {
 		console.log('Reading file', configFileName);
-		json = JSON.parse(fs.readFileSync(fileName));
+		json = JSON.parse(fs.readFileSync(configFileName));
 
 	}
 	catch(error) {
