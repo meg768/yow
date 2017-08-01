@@ -6,7 +6,6 @@ var x = module.exports = function (fileName) {
 	function parse (src) {
 	  var obj = {}
 
-	  console.log('parsing', src);
 	  // convert Buffers before splitting into lines and processing
 	  src.toString().split('\n').forEach(function (line) {
 	    // matching "KEY' and 'VAL' in 'KEY=VAL'
