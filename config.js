@@ -2,6 +2,7 @@
 
 function loadConfig() {
 
+	var fs = require('fs');
 	var json = {};
 
 	try {
