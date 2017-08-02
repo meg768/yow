@@ -1,12 +1,12 @@
 
 
-function loadConfig() {
+function loadConfig(fileName) {
 
-	var fs = require('fs');
 	var json = {};
 
 	try {
-		json = JSON.parse(fs.readFileSync('.config'));
+		var fs = require('fs');
+		json = JSON.parse(fs.readFileSync(fileName));
 	}
 	catch(error) {
 		console.error(error);
@@ -15,4 +15,8 @@ function loadConfig() {
 	return json;
 }
 
-var config = module.exports = loadConfig();
+var config = loadConfig('.config');
+
+config.load = loadConfig;
+
+module.exports = config;
