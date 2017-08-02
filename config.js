@@ -1,22 +1,17 @@
 
 
-var Config = module.exports = function (fileName) {
-
-	var fs = require('fs');
-	var Path = require('path');
-	var fileParts = Path.parse(fileName);
-	var configFileName = Path.join(fileParts.dir, fileParts.name) + '.json';
+function loadConfig() {
 
 	var json = {};
 
 	try {
-		console.log('Reading file', configFileName);
-		json = JSON.parse(fs.readFileSync(configFileName));
-
+		json = JSON.parse(fs.readFileSync('.config'));
 	}
 	catch(error) {
-		json =  {error:error.message};
+		console.error(error);
 	}
 
 	return json;
 }
+
+var config = module.exports = loadConfig();
