@@ -100,3 +100,16 @@ Also available as require('yow/random')
 	Previously set timers are cancelled.
 
 - **timer.cancel()** - Cancels the timer.
+
+### Request
+
+	var Request = require('yow/request');
+	var request = new Request(defaultOptions);
+
+A light-wight http/https request module.
+
+- **request.get(options)**
+- **request.post(options)**
+- **request.delete(options)**
+- **request.put(options)**
+- **request.request(options)**
