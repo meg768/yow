@@ -104,13 +104,14 @@ Also available as require('yow/random')
 ### Request
 
 	var Request = require('yow/request');
-	var request = new Request(defaultOptions);
+	var request = new Request(options);
 
 A light-wight http/https request module.
 
-	function test() {
+	function example() {
 
-		var yahoo = new Gopher('https://query.yahooapis.com', {debug:false});
+		var Request = require('yow/request');
+		var yahoo = new Request('https://query.yahooapis.com');
 
 		function getQuote(ticker) {
 			var query = {};
@@ -131,7 +132,7 @@ A light-wight http/https request module.
 			})
 
 			.catch (function(error) {
-				console.log('ERROR', error);
+				console.log(error);
 
 			});
 
@@ -141,8 +142,8 @@ A light-wight http/https request module.
 
 	};
 
-- **request.get(options)**
-- **request.post(options)**
-- **request.delete(options)**
-- **request.put(options)**
-- **request.request(options)**
+- **request.request(options)** - See https://nodejs.org/api/http.html#http_http_request_options_callback for documentation.
+- **request.get(options)**     - Same as request('GET', options)
+- **request.post(options)**    - Same as request('POST', options)
+- **request.delete(options)**  - Same as request('DELETE', options)
+- **request.put(options)**     - Same as request('PUT', options)
