@@ -1,5 +1,7 @@
 
 
+var config = {};
+
 function loadConfig(fileName) {
 
 	var json = {};
@@ -12,11 +14,12 @@ function loadConfig(fileName) {
 		console.error(error);
 	}
 
+	json.load = loadConfig;
+
 	return json;
 }
 
 var config = loadConfig('.config');
 
-config.load = loadConfig;
 
 module.exports = config;
