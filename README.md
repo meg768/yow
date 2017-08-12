@@ -106,7 +106,7 @@ Also available as require('yow/random')
 	var Request = require('yow/request');
 	var request = new Request(options);
 
-A light-wight http/https request module.
+A light-weight http/https request module.
 
 	function example() {
 
