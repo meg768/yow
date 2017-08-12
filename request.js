@@ -122,8 +122,6 @@ class Gopher {
 			var iface = params.protocol === "https:" ? https : http;
 
 
-			console.log('*********************************************REQUEST params', params);
-
 	        var request = iface.request(params, function(response) {
 	            var body = [];
 
