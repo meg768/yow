@@ -108,6 +108,39 @@ Also available as require('yow/random')
 
 A light-wight http/https request module.
 
+	function test() {
+
+		var yahoo = new Gopher('https://query.yahooapis.com', {debug:false});
+
+		function getQuote(ticker) {
+			var query = {};
+
+			query.q        = 'select * from yahoo.finance.quotes where symbol =  "' + ticker + '"';
+			query.format   = 'json';
+			query.env      = 'store://datatables.org/alltableswithkeys';
+			query.callback = '';
+
+			yahoo.get('/v1/public/yql', {query:query}).then(function(response) {
+				var quotes = response.body.query.results.quote;
+
+				if (typeof qoutes != 'Array')
+					quotes = [quotes];
+
+				console.log(ticker, '=', quotes[0].LastTradePriceOnly);
+
+			})
+
+			.catch (function(error) {
+				console.log('ERROR', error);
+
+			});
+
+		}
+
+		getQuote('AAPL');
+
+	};
+
 - **request.get(options)**
 - **request.post(options)**
 - **request.delete(options)**
