@@ -34,6 +34,7 @@ var Queue = module.exports = function(limit) {
 					setTimeout(recurse, 0);
 				})
 				.catch(function(error) {
+					_running = false;
 					reject(error);
 				});
 
