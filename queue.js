@@ -15,7 +15,7 @@ var Queue = module.exports = function(limit) {
 
 				_promise = _queue.splice(0, 1)[0];
 
-				_promise().then(function() {
+				_promise.then(function() {
 					_promise = undefined;
 
 					function recurse() {
