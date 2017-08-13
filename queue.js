@@ -3,20 +3,24 @@ var isArray = require('./yow.js').isArray;
 
 var Queue = module.exports = function(limit) {
 
-	var _this = this;
-	var _queue = [];
-	var _promise = undefined;
-	var _limit = limit == undefined ? 1000 : limit;
+	var _this    = this;
+	var _queue   = [];
+	var _running = false;
+	var _limit   = limit == undefined ? 1000 : limit;
 
 	_this.dequeue = function() {
 
 		return new Promise(function(resolve, reject) {
-			if (_queue.length > 0 && _promise == undefined) {
+			if (_queue.length > 0 && !_running) {
 
-				_promise = _queue.splice(0, 1)[0];
+				_running = true;
 
-				_promise.then(function() {
-					_promise = undefined;
+				// Get next function in line
+				var fn = _queue.splice(0, 1)[0];
+
+				// Call it, and wait for complete
+				fn().then(function() {
+					_running = false;
 
 					function recurse() {
 						_this.dequeue().then(function() {
@@ -60,34 +64,34 @@ var Queue = module.exports = function(limit) {
 
 
 	_this.isRunning = function() {
-		return _promise != undefined;
+		return _running;
 	};
 
 	_this.isEmpty = function() {
 		return _queue.length == 0;
 	};
 
-	this.prequeue = function(promise) {
+	this.prequeue = function(fn) {
 
 		if (_queue.length > _limit) {
 			console.log('Queue too big! Truncating.');
-			_queue = [promise];
+			_queue = [fn];
 		}
 		else {
-			_queue.unshift(promise);
+			_queue.unshift(fn);
 
 		}
 
 	}
 
-	this.enqueue = function(promise) {
+	this.enqueue = function(fn) {
 
 		if (_queue.length > _limit) {
 			console.log('Queue too big! Truncating.');
-			_queue = [promise];
+			_queue = [fn];
 		}
 		else {
-			_queue.push(promise);
+			_queue.push(fn);
 
 		}
 
