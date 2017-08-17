@@ -117,39 +117,39 @@ var request = new Request(options);
 A light-weight http/https request module.
 
 ````javascript
-	function example() {
+function example() {
 
-		var Request = require('yow/request');
-		var yahoo = new Request('https://query.yahooapis.com');
+	var Request = require('yow/request');
+	var yahoo = new Request('https://query.yahooapis.com');
 
-		function getQuote(ticker) {
-			var query = {};
+	function getQuote(ticker) {
+		var query = {};
 
-			query.q        = 'select * from yahoo.finance.quotes where symbol =  "' + ticker + '"';
-			query.format   = 'json';
-			query.env      = 'store://datatables.org/alltableswithkeys';
-			query.callback = '';
+		query.q        = 'select * from yahoo.finance.quotes where symbol =  "' + ticker + '"';
+		query.format   = 'json';
+		query.env      = 'store://datatables.org/alltableswithkeys';
+		query.callback = '';
 
-			yahoo.get('/v1/public/yql', {query:query}).then(function(response) {
-				var quotes = response.body.query.results.quote;
+		yahoo.get('/v1/public/yql', {query:query}).then(function(response) {
+			var quotes = response.body.query.results.quote;
 
-				if (typeof qoutes != 'Array')
-					quotes = [quotes];
+			if (typeof qoutes != 'Array')
+				quotes = [quotes];
 
-				console.log(ticker, '=', quotes[0].LastTradePriceOnly);
+			console.log(ticker, '=', quotes[0].LastTradePriceOnly);
 
-			})
+		})
 
-			.catch (function(error) {
-				console.log(error);
+		.catch (function(error) {
+			console.log(error);
 
-			});
+		});
 
-		}
+	}
 
-		getQuote('AAPL');
+	getQuote('AAPL');
 
-	};
+};
 ````
 
 - **request.request(options)** - See https://nodejs.org/api/http.html#http_http_request_options_callback for documentation.
