@@ -9,7 +9,7 @@ var isObject = require('./is.js').isObject;
 var Gopher = module.exports = function(baseURL, defaultOptions) {
 
 	this.get = function(path, options) {
-		return this.request('GET', path, o	ptions);
+		return this.request('GET', path, options);
 	}
 
 	this.put = function(path, options) {

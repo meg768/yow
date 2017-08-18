@@ -84,7 +84,6 @@ class Gopher {
 		}
 		else {
 			return Promise.reject('Missing options.');
-
 		}
 
 	    return new Promise(function(resolve, reject) {
