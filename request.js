@@ -110,6 +110,32 @@ class Gopher {
 			var params = {};
 			extend(params, self.defaultOptions, options, {headers:headers});
 
+			if (isString(params.path) && isObject(params.params)) {
+				var parts = [];
+
+				params.path.split('/').forEach(function(part) {
+					var match = part.match('^:([_$@A-Za-z0-9]+)$');
+
+					if (!match)
+						match = part.match('^{([_$@A-Za-z0-9]+)}$');
+
+					if (match) {
+						var name = match[1];
+
+						if (params.params[name] != undefined) {
+							parts.push(params.params[name]);
+						}
+						else
+							parts.push(part);
+					}
+					else
+						parts.push(part);
+
+				});
+
+				params.path = parts.join('/');
+			}
+
 			if (isObject(params.query)) {
 				params.query = querystring.stringify(params.query);
 			}
@@ -121,6 +147,9 @@ class Gopher {
 
 			var iface = params.protocol === "https:" ? https : http;
 
+			if (params.debug) {
+				console.log('Request:', params);
+			}
 
 	        var request = iface.request(params, function(response) {
 	            var body = [];
