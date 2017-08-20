@@ -184,7 +184,7 @@ class Gopher {
 	                };
 
 	                if (response.statusCode < 200 || response.statusCode > 299) {
-	                    reject(reply);
+	                    reject(new Error(reply.statusMessage));
 	                }
 					else {
 	                    resolve(reply);
