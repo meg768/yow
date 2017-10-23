@@ -29,12 +29,12 @@ var random = module.exports = function() {
 			return choose(arg);
 		}
 
-		if (isInteger(arg)) {
-			return Math.floor(Math.random() * arg);
-		}
-
 		if (isFloat(arg)) {
 			return Math.random() * arg;
+		}
+
+		if (isInteger(arg)) {
+			return Math.floor(Math.random() * arg);
 		}
 
 		if (isObject(arg)) {
