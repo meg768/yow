@@ -33,9 +33,14 @@ var random = module.exports = function() {
 			return Math.floor(Math.random() * arg);
 		}
 
+		if (isFloat(arg)) {
+			return Math.random() * arg;
+		}
+
 		if (isObject(arg)) {
 			return arg[choose(Object.keys(arg))];
 		}
+
 	}
 
 	if (arguments.length == 2) {

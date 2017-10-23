@@ -69,6 +69,7 @@ var random = require('yow/random');
 
 - **random()**              - Returns Math.random().
 - **random(integer)**       - Returns a random number from 0 to the integer specified (exclusive).
+- **random(float)**         - Returns a random number from 0 to the float number specified (exclusive).
 - **random(min, max)**      - Returns a random number from min to max (inclusive).
 - **random(array)**         - Returns a randomly chosen object in the specified array.
 - **random(object)**        - Returns a randomly chosen object property.
