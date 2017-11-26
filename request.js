@@ -9,7 +9,10 @@ var extend      = require('yow/extend');
 var isArray     = require('yow/is').isArray;
 var isString    = require('yow/is').isString;
 var isObject    = require('yow/is').isObject;
+var isFunction  = require('yow/is').isFunction;
 
+function debug() {
+};
 
 class Gopher {
 
@@ -38,6 +41,10 @@ class Gopher {
 				extend(options, arguments[1]);
 
 		}
+
+		if (options.debug) {
+            debug = isFunction(options.debug) ? options.debug : console.log;
+        }
 
 		this.defaultOptions = extend({}, options);
 
@@ -146,9 +153,7 @@ class Gopher {
 
 			var iface = params.protocol === "https:" ? https : http;
 
-			if (params.debug) {
-				console.log('Request:', params);
-			}
+			debug('Request:', params);
 
 	        var request = iface.request(params, function(response) {
 	            var body = [];
