@@ -23,7 +23,7 @@ var Timer = module.exports = function() {
 		}, delay);
 	}
 
-	_this.cancel = cancel();
-	_this.setTimer = setTimer();
+	_this.cancel = cancel;
+	_this.setTimer = setTimer;
 
 };
