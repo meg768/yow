@@ -15,10 +15,12 @@ var Timer = module.exports = function() {
 		if (delay == undefined)
 			delay = 3000;
 
-		if (_timer != undefined)
-			clearTimeout(_timer);
+		_this.cancel();
 
-		_timer = setTimeout(fn, delay);
+		_timer = setTimeout(function() {
+			_this.cancel();
+			fn();
+		}, delay);
 
 	};
 
