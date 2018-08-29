@@ -11,8 +11,7 @@ var isString    = require('yow/is').isString;
 var isObject    = require('yow/is').isObject;
 var isFunction  = require('yow/is').isFunction;
 
-function debug() {
-};
+var debug = function() {};
 
 class Gopher {
 
