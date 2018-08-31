@@ -3,24 +3,24 @@ var querystring  = require('querystring');
 var Path         = require('path');
 var URL          = require('url');
 
-var sprintf     = require('yow/sprintf');
-var extend      = require('yow/extend');
-
-var isArray     = require('yow/is').isArray;
 var isString    = require('yow/is').isString;
 var isObject    = require('yow/is').isObject;
 var isFunction  = require('yow/is').isFunction;
 
-var debug = function() {};
+function debug() {
+};
 
-class Gopher {
 
-	constructor() {
+function Gopher() {
+
+	var self = this;
+
+	function constructor() {
 
 		var options = {protocol:'https:'};
 
 		if (isObject(arguments[0])) {
-			extend(options, arguments[0]);
+			Object.assign(options, arguments[0]);
 		}
 
 		else if (isString(arguments[0])) {
@@ -37,7 +37,7 @@ class Gopher {
 				options.hostname = url.hostname;
 
 			if (isObject(arguments[1]))
-				extend(options, arguments[1]);
+				Object.assign(options, arguments[1]);
 
 		}
 
@@ -45,28 +45,28 @@ class Gopher {
             debug = isFunction(options.debug) ? options.debug : console.log;
         }
 
-		this.defaultOptions = extend({}, options);
-
-	};
-
-	get() {
-		return this.request.apply(this, ['GET', ...arguments]);
+		self.defaultOptions = Object.assign({}, options);
 	}
 
-	put() {
-		return this.request.apply(this, ['PUT', ...arguments]);
+	this.get = function() {
+		return self.request.apply(self, ['GET'].concat(Array.prototype.slice.call(arguments)));
 	}
 
-	post() {
-		return this.request.apply(this, ['POST', ...arguments]);
+	this.delete = function() {
+		return self.request.apply(self, ['DELETE'].concat(Array.prototype.slice.call(arguments)));
 	}
 
-	delete() {
-		return this.request.apply(this, ['DELETE', ...arguments]);
+	this.post = function() {
+		return self.request.apply(self, ['POST'].concat(Array.prototype.slice.call(arguments)));
 	}
 
+	this.put = function() {
+		return self.request.apply(self, ['PUT'].concat(Array.prototype.slice.call(arguments)));
+	}
 
-	request() {
+	this.request = function() {
+
+		debug('Request:', arguments);
 
 		var self    = this;
 		var https   = require('https');
@@ -78,11 +78,11 @@ class Gopher {
 				options.method = arguments[0];
 				options.path   = arguments[1];
 
-				extend(options, arguments[2]);
+				Object.assign(options, arguments[2]);
 			}
 			else {
 				options.method = arguments[0];
-				extend(options, arguments[1]);
+				Object.assign(options, arguments[1]);
 			}
 		}
 		else if (isObject(arguments[0])) {
@@ -113,7 +113,7 @@ class Gopher {
 			headers['content-length'] = data == undefined ? 0 : data.length;
 
 			var params = {};
-			extend(params, self.defaultOptions, options, {headers:headers});
+			Object.assign(params, self.defaultOptions, options, {headers:headers});
 
 			if (isString(params.path) && isObject(params.params)) {
 				var parts = [];
@@ -207,6 +207,10 @@ class Gopher {
 	        request.end();
 	    })
 	};
-};
+
+
+	constructor.apply(self, arguments);
+}
+
 
 module.exports = Gopher;
