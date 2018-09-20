@@ -42,6 +42,8 @@ function Gopher() {
 			if (isObject(arguments[1]))
 				Object.assign(options, arguments[1]);
 
+			console.log('!!!!!!!!!!!!!!!!!!!', options)
+
 		}
 
 		if (options.debug) {
