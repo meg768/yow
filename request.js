@@ -39,6 +39,9 @@ function Gopher() {
 			if (url.path != undefined)
 				options.path = url.path;
 
+			if (url.pathname != undefined)
+				options.path = url.pathname;
+
 			if (isObject(arguments[1]))
 				Object.assign(options, arguments[1]);
 
