@@ -19,14 +19,12 @@ function Gopher() {
 
 		var options = {protocol:'https:'};
 
-		console.log('???????????????????');
 		if (isObject(arguments[0])) {
 			Object.assign(options, arguments[0]);
 		}
 
 		else if (isString(arguments[0])) {
 			var url = new URL.parse(arguments[0]);
-
 
 			if (url.protocol != undefined)
 				options.protocol = url.protocol;
@@ -45,8 +43,6 @@ function Gopher() {
 
 			if (isObject(arguments[1]))
 				Object.assign(options, arguments[1]);
-
-			console.log('!!!!!!!!!!!!!!!!!!!', options)
 
 		}
 
