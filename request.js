@@ -19,6 +19,7 @@ function Gopher() {
 
 		var options = {protocol:'https:'};
 
+		console.log('???????????????????');
 		if (isObject(arguments[0])) {
 			Object.assign(options, arguments[0]);
 		}
