@@ -68,7 +68,7 @@ function Gopher() {
 
 	this.request = function() {
 
-		debug('Request:', arguments);
+		debug('Request arguments:', arguments);
 
 		var self    = this;
 		var https   = require('https');
@@ -94,6 +94,8 @@ function Gopher() {
 			return Promise.reject('Missing options.');
 		}
 
+		debug('Request options:', options);
+		
 	    return new Promise(function(resolve, reject) {
 			var data = isObject(options.body) ? JSON.stringify(options.body) : options.body;
 			var headers = {};
@@ -113,6 +115,9 @@ function Gopher() {
 			}
 
 			headers['content-length'] = data == undefined ? 0 : data.length;
+
+			if (isObject(options.body)) 
+				headers['content-type'] = 'application/json';
 
 			var params = {};
 			Object.assign(params, self.defaultOptions, options, {headers:headers});
@@ -154,9 +159,13 @@ function Gopher() {
 
 			var iface = params.protocol === "https:" ? https : http;
 
-			debug('Request:', params);
+			debug('Request params:', params);
 
 	        var request = iface.request(params, function(response) {
+
+				if (data)
+					response.setEncoding('utf8');				
+				
 	            var body = [];
 
 				response.on('data', function(chunk) {
@@ -199,7 +208,6 @@ function Gopher() {
 	        });
 
 	        if (data) {
-				debug('Writing data:', data);
 	            request.write(data);
 	        }
 
