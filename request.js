@@ -199,6 +199,7 @@ function Gopher() {
 	        });
 
 	        if (data) {
+				debug('Writing data:', data);
 	            request.write(data);
 	        }
 
