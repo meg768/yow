@@ -114,10 +114,10 @@ function Gopher() {
 
 			}
 
-			headers['content-length'] = data == undefined ? 0 : data.length;
+			headers['content-length'] = data == undefined ? 0 : Buffer.from(data).length;
 
 			if (isObject(options.body)) 
-				headers['content-type'] = 'application/json';
+				headers['content-type'] = 'application/json;charset=utf-8';
 
 			var params = {};
 			Object.assign(params, self.defaultOptions, options, {headers:headers});
@@ -163,10 +163,9 @@ function Gopher() {
 
 	        var request = iface.request(params, function(response) {
 
-				if (data)
-					response.setEncoding('utf8');				
-				
-	            var body = [];
+				response.setEncoding('utf8');				
+
+				var body = [];
 
 				response.on('data', function(chunk) {
 					body.push(chunk);
