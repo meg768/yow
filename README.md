@@ -19,6 +19,7 @@ var extend = require('yow/extend');
 
 - **sprintf(args)**        - Just as you would expect. Uses the npm module 'sprintf-js'.
 - **extend(args)**         - Again, just as you would expect. Uses the npm module 'extend'.
+- **once(fn, context)**    - Call a function just once and return the same result.
 
 
 ### File System
