@@ -1,8 +1,6 @@
 
 var isArray   = require('./is.js').isArray;
-var isNumber  = require('./is.js').isNumber;
 var isInteger = require('./is.js').isInteger;
-var isFloat   = require('./is.js').isFloat;
 var isObject  = require('./is.js').isObject;
 
 
@@ -28,12 +26,6 @@ var random = module.exports = function() {
 		if (isArray(arg)) {
 			return choose(arg);
 		}
-
-/*
-		if (isFloat(arg)) {
-			return Math.random() * arg;
-		}
-*/
 
 		if (isInteger(arg)) {
 			return Math.floor(Math.random() * arg);
