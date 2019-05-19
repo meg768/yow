@@ -1,12 +1,12 @@
 {
   "name": "yow",
-  "version": "1.0.105",
+  "version": "1.0.106",
   "description": "You Only Wish module",
   "main": "yow.js",
   "scripts": {
     "goto-github": "open https://github.com/meg768/yow",
     "goto-npm": "open https://www.npmjs.com/package/yow",
-    "commit": "git add -A && git commit -m '-' && git push"
+    "git-commit": "git add -A && git commit -m '-' && git push"
   },
   "repository": {
     "type": "git",
