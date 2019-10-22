@@ -1,7 +1,7 @@
 var sprintf    = require('./sprintf.js');
-var isString   = require('./is.js').isString;
-var isFunction = require('./is.js').isFunction;
-var mkpath     = require('./fs.js').mkpath;
+var isString   = require('./isString.js');
+var isFunction = require('./isFunction.js');
+var mkpath     = require('./mkpath.js');
 var path       = require('path');
 
 var prefix = module.exports.prefix = function(fn) {

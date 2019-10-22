@@ -25,11 +25,11 @@ var extend = require('yow/extend');
 ### File System
 
 ````javascript
-var mkdir = require('yow/fs').mkdir;
-var mkpath = require('yow/fs').mkpath;
-var fileExists = require('yow/fs').fileExists;
-var readJSON = require('yow/fs').readJSON;
-var writeJSON = require('yow/fs').writeJSON;
+var mkdir = require('yow/mkdir')
+var mkpath = require('yow/mkpath');
+var fileExists = require('yow/fileExists');
+var readJSON = require('yow/readJSON');
+var writeJSON = require('yow/writeJSON');
 ````
 
 - **mkdir(path)**                 - Creates the directory you specify.
@@ -41,15 +41,14 @@ var writeJSON = require('yow/fs').writeJSON;
 ### Type Checks
 
 ````javascript
-var isType = require('yow/is').isType;
-var isArray = require('yow/is').isArray;
-var isNumber = require('yow/is').isNumber;
-var isString = require('yow/is').isString;
-var isDate = require('yow/is').isDate;
-var isFunction = require('yow/is').isFunction;
-var isObject = require('yow/is').isObject;
-var isInteger = require('yow/is').isInteger;
-var isFloat = require('yow/is').isFloat;
+var isArray = require('yow/isArray');
+var isNumber = require('yow/isNumber');
+var isString = require('yow/isString');
+var isDate = require('yow/isDate');
+var isFunction = require('yow/isFunction');
+var isObject = require('yow/isObject');
+var isInteger = require('yow/isInteger');
+var isFloat = require('yow/isFloat');
 ````
 
 - **isType(object, type)**  - Returns true/false if typeof equals 'type'.

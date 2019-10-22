@@ -1,7 +1,7 @@
 
-var isArray   = require('./is.js').isArray;
-var isInteger = require('./is.js').isInteger;
-var isObject  = require('./is.js').isObject;
+var isArray   = require('./isArray.js');
+var isInteger = require('./isInteger.js');
+var isObject  = require('./isObject.js');
 
 
 function rand(min, max) {

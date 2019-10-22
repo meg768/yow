@@ -3,9 +3,9 @@ var querystring  = require('querystring');
 var Path         = require('path');
 var URL          = require('url');
 
-var isString    = require('yow/is').isString;
-var isObject    = require('yow/is').isObject;
-var isFunction  = require('yow/is').isFunction;
+var isString    = require('./isString');
+var isObject    = require('./isObject');
+var isFunction  = require('./isFunction');
 
 function debug() {
 };

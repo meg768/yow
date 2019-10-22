@@ -1,5 +1,5 @@
 
-var range = module.exports = function(min, max, step) {
+module.exports = function(min, max, step) {
 
 	var items = [];
 
