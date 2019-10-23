@@ -16,11 +16,13 @@ npm install yow --save
 var sprintf = require('yow/sprintf');
 var vsprintf = require('yow/vsprintf');
 var once = require('yow/once');
+var merge = require('yow/merge');
 ````
 
-- **sprintf(args)**        - Just as you would expect. Uses the npm module 'sprintf-js'.
-- **vsprintf(args)**       - Just as you would expect. Uses the npm module 'sprintf-js'.
-- **once(fn, context)**    - Call a function just once and return the same result.
+- **sprintf(args)**          - Just as you would expect. Uses the npm module 'sprintf-js'.
+- **vsprintf(args)**         - Just as you would expect. Uses the npm module 'sprintf-js'.
+- **once(fn, context)**      - Call a function just once and return the same result.
+- **merge({}, objects...)**  - Like Object.assign() but does a deep merge.
 
 
 ### File System
