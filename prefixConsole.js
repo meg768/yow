@@ -1,9 +1,10 @@
 
 module.exports = function(fn) {
 
+
 	var sprintf = require('./sprintf');
 	var isFunction = require('./isFunction');
-	var methodsNames = ['log', 'error', 'warn', 'info'];
+	var methodsNames = ['log', 'error', 'warn', 'info', 'debug'];
 
 	if (fn == undefined) {
 		fn = function() {
@@ -24,6 +25,8 @@ module.exports = function(fn) {
 			method.apply(console, args);	
 		}
 		
-	});
+    });
+    
+    return console;
 
 }
