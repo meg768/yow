@@ -48,6 +48,8 @@ function Gopher() {
         }
 
 		self.defaultOptions = Object.assign({}, options);
+
+		debug('Default options', self.defaultOptions);
 	}
 
 	this.get = function() {
@@ -114,6 +116,11 @@ function Gopher() {
 
 			}
 
+			// If default options includes a path, join the two
+			if (isString(self.defaultOptions.path) && isString(options.path)) {
+				options.path = Path.join(self.defaultOptions.path, options.path);
+			}
+
 			headers['content-length'] = data == undefined ? 0 : Buffer.from(data).length;
 
 			if (isObject(options.body)) 
@@ -155,7 +162,6 @@ function Gopher() {
 			if (isString(params.query) && params.query.length > 0) {
 				params.path = params.path + '?' + params.query;
 			}
-
 
 			var iface = params.protocol === "https:" ? https : http;
 
