@@ -191,8 +191,6 @@ function Gopher() {
 							body = JSON.parse(body);
 		                }
 						catch (error) {
-		                    console.error('Cannot parse JSON from API.', body);
-							body = {};
 		                }
 					}
 
@@ -203,12 +201,7 @@ function Gopher() {
 	                    body           : body
 	                };
 
-	                if (response.statusCode < 200 || response.statusCode > 299) {
-	                    reject(new Error(reply.statusMessage));
-	                }
-					else {
-	                    resolve(reply);
-	                }
+	                resolve(reply);
 	            })
 	        });
 
