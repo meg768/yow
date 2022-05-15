@@ -1,7 +1,7 @@
 const fs = require('fs');
 const Path = require('path');
 
-function loadConfig(fileName = '.config') {
+function loadConfig(fileName) {
 	let configFile = Path.resolve(process.cwd(), fileName);
 
 	if (!fs.existsSync(configFile)) {
@@ -22,4 +22,4 @@ function loadConfig(fileName = '.config') {
 	return config;
 }
 
-module.exports = loadConfig();
+module.exports = loadConfig('.config');
