@@ -23,7 +23,7 @@ module.exports = function loadConfig(fileName) {
 		}
 	}
 	catch(error) {
-		config.error = error;
+		console.error(error);
 	}
 
 	return config;
