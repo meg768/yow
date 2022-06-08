@@ -1,3 +1,4 @@
+
 const fs = require('fs');
 const Path = require('path');
 const mkpath = require('./mkpath.js');
@@ -11,14 +12,11 @@ function load(fileName) {
 	if (fileName == undefined)
 		fileName = '.config';
 
-	if (!fileExists(configFile)) {
+	if (Path.dirname(fileName) == '.')
 		configFile = Path.join(Path.dirname(process.argv[1]), fileName);
-	}
-
-	if (!fileExists(configFile)) {
-		configFile = Path.resolve(process.cwd(), fileName);
-	}
-	
+	else
+		configFile = fileName;
+		
 	if (fileExists(configFile)) {
 		config = JSON.parse(fs.readFileSync(configFile));	
 	}
@@ -28,11 +26,13 @@ function load(fileName) {
 
 function save() {
 
-	if (!fileExists(configFile)) {
-		mkpath(Path.dirname(configFile));
+	if (configFile != '') {
+		if (!fileExists(configFile)) {
+			mkpath(Path.dirname(configFile));
+		}
+	
+		fs.writeFileSync(configFile, JSON.stringify(config, null, '\t'));	
 	}
-
-	fs.writeFileSync(configFile, JSON.stringify(config, null, '\t'));
 }
 
 module.exports = load;
