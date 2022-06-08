@@ -1,30 +1,37 @@
 const fs = require('fs');
 const Path = require('path');
+const mkpath = require('./mkpath.js');
+const fileExists = require('./fileExists.js');
 
-module.exports = function loadConfig(fileName) {
+let configFile = '';
+let config = {};
 
-	let configFile = '';
-	let config = {};
+module.exports.load = function(fileName) {
 
 	if (fileName == undefined)
 		fileName = '.config';
 
-	try {
-		if (!fs.existsSync(configFile)) {
-			configFile = Path.join(Path.dirname(process.argv[1]), fileName);
-		}
 	
-		if (!fs.existsSync(configFile)) {
-			configFile = Path.resolve(process.cwd(), fileName);
-		}
-		
-		if (fs.existsSync(configFile)) {
-			config = JSON.parse(fs.readFileSync(configFile));	
-		}
+	if (!fileExists(configFile)) {
+		configFile = Path.join(Path.dirname(process.argv[1]), fileName);
 	}
-	catch(error) {
-		console.error(error);
+
+	if (!fileExists(configFile)) {
+		configFile = Path.resolve(process.cwd(), fileName);
+	}
+	
+	if (fileExists(configFile)) {
+		config = JSON.parse(fs.readFileSync(configFile));	
 	}
 
 	return config;
+}
+
+module.exports.save = function() {
+
+	if (!fileExists(configFile)) {
+		mkpath(Path.dirname(configFile));
+	}
+
+	fs.writeFileSync(configFile, JSON.stringify(config, null, '\t'));
 }
