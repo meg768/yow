@@ -6,12 +6,11 @@ const fileExists = require('./fileExists.js');
 let configFile = '';
 let config = {};
 
-module.exports.load = function(fileName) {
+function load(fileName) {
 
 	if (fileName == undefined)
 		fileName = '.config';
 
-	
 	if (!fileExists(configFile)) {
 		configFile = Path.join(Path.dirname(process.argv[1]), fileName);
 	}
@@ -27,7 +26,7 @@ module.exports.load = function(fileName) {
 	return config;
 }
 
-module.exports.save = function() {
+function save() {
 
 	if (!fileExists(configFile)) {
 		mkpath(Path.dirname(configFile));
@@ -35,3 +34,7 @@ module.exports.save = function() {
 
 	fs.writeFileSync(configFile, JSON.stringify(config, null, '\t'));
 }
+
+module.exports = load;
+module.exports.load = load;
+module.exports.save = save;
